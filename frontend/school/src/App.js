@@ -2,7 +2,6 @@ import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/navbar';
 import Home from './pages/home';
-import { Import } from 'lucide-react';
 import {Routes,Route} from "react-router-dom"
 import Register from './pages/Register';
 import Login from './pages/Login';

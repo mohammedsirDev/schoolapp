@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom"
-import {Clock, BookOpen, Users } from 'lucide-react'
+import { Clock, BookOpen, Users } from 'lucide-react'
 
-import {API_URL} from '../utils/api'
+import { API_URL } from '../utils/api'
+
 function ProgramsList() {
   const [programs, setPrograms] = useState([])
   const [loading, setLoading] = useState(true)
@@ -96,6 +97,7 @@ function ProgramsList() {
 
                 <div className='grid grid-cols-2 gap-2 mt-1'>
                   <div className='flex items-center gap-1 text-xs text-gray-500'>
+                    <padding size={13} className='text-indigo-400' />
                     <Users size={13} className='text-indigo-400' />
                     <span>{program.seats} seats</span>
                   </div>
@@ -109,11 +111,16 @@ function ProgramsList() {
                   </div>
                 </div>
 
-              <div className='border-t border-gray-100 pt-3 mt-1 flex items-center justify-end'>
-                <button type="button" className='text-xs text-indigo-600 font-medium group-hover:underline'>
-                  View Details →
-                </button>
-              </div>
+                {/* Styled View Details Button */}
+                <div className='border-t border-gray-100 pt-4 mt-2'>
+                  <button 
+                    type="button" 
+                    className='w-full bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 group-hover:shadow-lg'
+                  >
+                    View Details
+                    <span className='transition-transform duration-300 group-hover:translate-x-1'>→</span>
+                  </button>
+                </div>
               </div>
             </div>
           ))}

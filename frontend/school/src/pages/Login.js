@@ -4,8 +4,7 @@ import axios from 'axios'
 import Swal from 'sweetalert2'
 import { useAuth } from '../auth/AuthContext'
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
-
+import {API_URL} from '../utils/api'
 // Professional Toast Configuration
 const Toast = Swal.mixin({
   toast: true,

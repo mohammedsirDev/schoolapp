@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Clock, MapPin } from 'lucide-react'
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
-
+import {API_URL} from '../utils/api'
 function EventsList() {
   const [events, setEvents] = useState([])
   const [loading, setLoading] = useState(true)

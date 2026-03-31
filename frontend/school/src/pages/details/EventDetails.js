@@ -2,8 +2,7 @@ import { Calendar, Clock, MapPin } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
-
+import {API_URL} from '../utils/api'
 function EventDetails() {
   const { id } = useParams()
   const [event, setEvent] = useState(null)

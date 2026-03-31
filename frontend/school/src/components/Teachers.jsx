@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
-
+import {API_URL} from '../utils/api'
 /**
  * Teachers Component - Displays a circular profile grid of educators.
  * Uses a hover-effect design and fetches data from the Django Teacher API.

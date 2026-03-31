@@ -4,7 +4,8 @@ import axios from 'axios'
 import { useAuth } from '../auth/AuthContext'
 import Swal from 'sweetalert2'
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://127.0.0.1:8000';
+
+import {API_URL} from '../utils/api'
 
 const Toast = Swal.mixin({
   toast: true,
@@ -53,7 +54,7 @@ function Register() {
 
     setLoading(true)
     try {
-      await axios.post(`${API_URL}/users/`, form)
+      await axios.post("https://simosir99.pythonanywhere.com/users/", form)
       
       await Toast.fire({
         icon: 'success', 

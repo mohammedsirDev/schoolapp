@@ -5,8 +5,7 @@ import { Star } from 'lucide-react'
 import axios from 'axios'
 import Swal from 'sweetalert2'
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
-
+import {API_URL} from '../utils/api'
 // Professional Toast Configuration
 const Toast = Swal.mixin({
   toast: true,

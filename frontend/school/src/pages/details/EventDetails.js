@@ -2,13 +2,15 @@ import { Calendar, Clock, MapPin } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
 function EventDetails() {
   const { id } = useParams()
   const [event, setEvent] = useState(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:8000/Event/${id}`)
+    fetch(`${API_URL}/Event/${id}`)
       .then((res) => {
         if (!res.ok) throw new Error(`Server error: ${res.status}`)
         return res.json()
@@ -68,8 +70,6 @@ function EventDetails() {
           </div>
 
         </div>
-
-
 
       </div>
     </div>

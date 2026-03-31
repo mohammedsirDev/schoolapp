@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Clock, MapPin } from 'lucide-react'
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
 function EventsList() {
   const [events, setEvents] = useState([])
   const [loading, setLoading] = useState(true)
@@ -11,7 +13,7 @@ function EventsList() {
 
   useEffect(() => {
     setLoading(true)
-    fetch(`http://127.0.0.1:8000/Event/?page=${page}`)
+    fetch(`${API_URL}/Event/?page=${page}`)
       .then((res) => {
         if (!res.ok) throw new Error(`Erreur serveur: ${res.status}`)
         return res.json()

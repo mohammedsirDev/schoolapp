@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom"
 import { Clock, MapPin } from 'lucide-react'
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
 /**
  * Events Component - Displays a grid of upcoming school activities.
  * Features a loading skeleton and handles both paginated and non-paginated API responses.
@@ -11,7 +14,7 @@ function Events() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/Event/")
+    fetch(`${API_URL}/Event/`)
       .then((res) => {
         if (!res.ok) throw new Error(`Erreur serveur: ${res.status}`)
         return res.json()

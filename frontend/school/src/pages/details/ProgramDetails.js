@@ -5,6 +5,8 @@ import axios from 'axios'
 import { useAuth } from '../../auth/AuthContext'
 import Swal from 'sweetalert2'
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
 // Professional Toast Configuration
 const Toast = Swal.mixin({
   toast: true,
@@ -29,7 +31,7 @@ function ProgramDetails() {
   const [submitting, setSubmitting] = useState(false)
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:8000/Program/${id}/`)
+    fetch(`${API_URL}/Program/${id}/`)
       .then((res) => res.json())
       .then((data) => setProgram(data))
       .catch((err) => console.error(err))
@@ -39,7 +41,6 @@ function ProgramDetails() {
   const handleAddReview = async (e) => {
     e.preventDefault()
 
-    // ✅ Check if all fields are filled
     if (!name.trim() || !email.trim() || !newComment.trim()) {
       return Toast.fire({
         icon: 'warning',
@@ -50,7 +51,7 @@ function ProgramDetails() {
     setSubmitting(true)
 
     try {
-      await axios.post("http://127.0.0.1:8000/Review/", {
+      await axios.post(`${API_URL}/Review/`, {
         comment: newComment,
         name,
         email,
@@ -59,7 +60,6 @@ function ProgramDetails() {
         headers: { Authorization: `Token ${token}` }
       })
       
-      // ✅ Success Toast
       Toast.fire({
         icon: 'success',
         title: 'Avis soumis avec succès !'
@@ -69,14 +69,13 @@ function ProgramDetails() {
       setName("")
       setEmail("")
       
-      const updated = await fetch(`http://127.0.0.1:8000/Program/${id}/`).then(res => res.json())
+      const updated = await fetch(`${API_URL}/Program/${id}/`).then(res => res.json())
       setProgram(updated)
       
     } catch (error) {
       const data = error.response?.data
       const errorMsg = data ? Object.values(data).flat()[0] : "Échec de la soumission"
       
-      // ✅ Error Toast
       Toast.fire({
         icon: 'error',
         title: errorMsg

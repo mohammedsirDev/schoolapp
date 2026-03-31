@@ -2,13 +2,15 @@ import { Star } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom"
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
 function Testimonial() {
   const [testimonials, setTestimonials] = useState([])
   const [loading, setLoading] = useState(true)
   const navigate = useNavigate()
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/Testimonial/")
+    fetch(`${API_URL}/Testimonial/`)
       .then((res) => {
         if (!res.ok) throw new Error(`Server error: ${res.status}`)
         return res.json()

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { BookOpen } from 'lucide-react'
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
 function TeachersList() {
   const [teachers, setTeachers] = useState([])
   const [loading, setLoading] = useState(true)
@@ -11,7 +13,7 @@ function TeachersList() {
 
   useEffect(() => {
     setLoading(true)
-    fetch(`http://127.0.0.1:8000/Teacher/?page=${page}`)
+    fetch(`${API_URL}/Teacher/?page=${page}`)
       .then((res) => {
         if (!res.ok) throw new Error(`Erreur serveur: ${res.status}`)
         return res.json()
@@ -54,17 +56,15 @@ function TeachersList() {
               onClick={() => navigate(`/teachers/${teacher.id}`)}
               className='bg-white rounded-2xl shadow hover:shadow-2xl transition-all duration-300 cursor-pointer border border-gray-100 overflow-hidden group p-6 flex flex-col items-center text-center'
             >
-              {/* ✅ Profile Picture Circle */}
+              {/* Profile Picture Circle */}
               <div className='relative w-32 h-32 mb-4'>
                 <div className='w-full h-full rounded-full overflow-hidden border-4 border-indigo-50 shadow-inner bg-gray-50'>
                   <img
                     src={teacher.image}
                     alt={teacher.name}
-                    /* object-top ensures the face is prioritized if the image is tall */
                     className='w-full h-full object-cover object-top group-hover:scale-110 transition duration-500'
                   />
                 </div>
-                {/* Decorative element */}
                 <div className='absolute bottom-0 right-2 w-6 h-6 bg-indigo-600 rounded-full border-2 border-white flex items-center justify-center'>
                    <BookOpen size={10} className='text-white' />
                 </div>
@@ -95,7 +95,7 @@ function TeachersList() {
         </div>
       )}
 
-      {/* Pagination (Same as before) */}
+      {/* Pagination */}
       {!loading && totalPages > 1 && (
         <div className='flex items-center justify-center gap-3 mt-12'>
           <button

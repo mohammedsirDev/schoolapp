@@ -4,6 +4,8 @@ import axios from 'axios'
 import { useAuth } from '../auth/AuthContext'
 import Swal from 'sweetalert2'
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
 // Professional Toast Configuration
 const Toast = Swal.mixin({
   toast: true,
@@ -36,7 +38,6 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    // ✅ Validation using Toast
     if (!form.username || !form.first_name || !form.last_name || !form.email || !form.password) {
       return Toast.fire({
         icon: 'warning',
@@ -53,9 +54,8 @@ function Register() {
 
     setLoading(true)
     try {
-      await axios.post("http://127.0.0.1:8000/users/", form)
+      await axios.post(`${API_URL}/users/`, form)
       
-      // Success remains a standard modal for clarity
       await Toast.fire({
         icon: 'success', 
         title: 'Compte créé !',
@@ -65,7 +65,6 @@ function Register() {
       navigate('/login')
     } catch (error) {
       const data = error.response?.data
-      // Extract the first error message from the backend response
       const errorMessage = data ? Object.values(data).flat()[0] : "Une erreur s'est produite."
       
       Toast.fire({ 
@@ -127,7 +126,7 @@ function Register() {
 
               <div className='flex flex-col gap-1'>
                 <label className='text-sm font-medium text-gray-700'>Mot de passe</label>
-                <input type="password" name="password" placeholder="Min. 6 caractères" value={form.password} onChange={handleChange}  minLength="6"
+                <input type="password" name="password" placeholder="Min. 6 caractères" value={form.password} onChange={handleChange} minLength="6"
                   className="border border-gray-200 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 transition"  />
               </div>
 

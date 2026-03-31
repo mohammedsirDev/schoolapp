@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom"
 import { Clock, BookOpen, Users } from 'lucide-react'
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
 function Programs() {
   const [programs, setPrograms] = useState([])
   const [loading, setLoading] = useState(true)
@@ -12,7 +14,7 @@ function Programs() {
  * Integrated with Django Rest Framework for fetching program and teacher data.
  */
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/Program/")
+    fetch(`${API_URL}/Program/`)
       .then((res) => {
         if (!res.ok) throw new Error(`Server error: ${res.status}`)
         return res.json()

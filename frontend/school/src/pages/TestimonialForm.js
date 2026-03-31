@@ -1,9 +1,11 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useAuth } from '../auth/AuthContext'
 import { useNavigate } from 'react-router-dom'
 import { Star } from 'lucide-react'
 import axios from 'axios'
 import Swal from 'sweetalert2'
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
 
 // Professional Toast Configuration
 const Toast = Swal.mixin({
@@ -19,11 +21,11 @@ const Toast = Swal.mixin({
 });
 
 function TestimonialForm() {
-  const { token,role } = useAuth()
+  const { token, role } = useAuth()
   const navigate = useNavigate()
   useEffect(() => {
     if (!role || !token) navigate('/login')
-  }, [role, token])
+  }, [role, token,navigate])
 
   const [form, setForm] = useState({ comment: "", rating: 5, name: "", email: "" })
   const [loading, setLoading] = useState(false)
@@ -31,7 +33,6 @@ function TestimonialForm() {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    // ✅ Validation: Check if all fields are filled
     if (!form.name || !form.email || !form.comment) {
       return Toast.fire({
         icon: 'warning',
@@ -39,7 +40,6 @@ function TestimonialForm() {
       });
     }
 
-    // ✅ Validation: Check if logged in
     if (!token) {
       return Toast.fire({
         icon: 'error',
@@ -49,11 +49,10 @@ function TestimonialForm() {
 
     setLoading(true)
     try {
-      await axios.post("http://127.0.0.1:8000/Testimonial/", form, {
+      await axios.post(`${API_URL}/Testimonial/`, form, {
         headers: { Authorization: `Token ${token}` }
       })
 
-      // Success Toast
       Toast.fire({
         icon: 'success',
         title: 'Témoignage envoyé !'

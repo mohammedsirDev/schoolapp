@@ -4,6 +4,8 @@ import axios from 'axios'
 import Swal from 'sweetalert2'
 import { useAuth } from '../auth/AuthContext'
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
 // Professional Toast Configuration
 const Toast = Swal.mixin({
   toast: true,
@@ -16,6 +18,7 @@ const Toast = Swal.mixin({
     toast.addEventListener('mouseleave', Swal.resumeTimer)
   }
 });
+
 function Login() {
   const navigate = useNavigate()
   const { role, token, login } = useAuth()
@@ -34,8 +37,8 @@ function Login() {
     e.preventDefault()
     setLoading(true)
     try {
-      const { data } = await axios.post("http://127.0.0.1:8000/auth/", form)
-      const { data: profileData } = await axios.get("http://127.0.0.1:8000/profile/", {
+      const { data } = await axios.post(`${API_URL}/auth/`, form)
+      const { data: profileData } = await axios.get(`${API_URL}/profile/`, {
         headers: { Authorization: `Token ${data.token}` }
       })
       const userRole = profileData.results[0]?.role

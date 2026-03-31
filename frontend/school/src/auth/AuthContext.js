@@ -1,5 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
 /**
  * AuthContext - Global state for managing user authentication and authorization.
  */
@@ -21,7 +23,7 @@ export function AuthProvider({ children }) {
      */
     useEffect(() => {
         if (token) {
-            fetch("http://127.0.0.1:8000/profile/", {
+            fetch(`${API_URL}/profile/`, {
                 headers: { Authorization: `Token ${token}` }
             })
             .then((res) => res.json())

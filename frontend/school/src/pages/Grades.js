@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useAuth } from '../auth/AuthContext'
 import { useNavigate } from 'react-router-dom'
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
 function Grades() {
   const { role, token } = useAuth()
   const navigate = useNavigate()
@@ -10,13 +12,13 @@ function Grades() {
 
   useEffect(() => {
     if (!token && role===null)
-       navigate('/login')  // ✅ Redirection si non connecté
-  }, [token, navigate])
+       navigate('/login')
+  }, [token,role, navigate])
 
   useEffect(() => {
     if (token) {
       setLoading(true)
-      fetch("http://127.0.0.1:8000/Grade/", {
+      fetch(`${API_URL}/Grade/`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Token ${token}`,

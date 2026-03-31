@@ -5,7 +5,7 @@ import axios from 'axios'
 import { useAuth } from '../../auth/AuthContext'
 import Swal from 'sweetalert2'
 
-import {API_URL} from '../utils/api'
+import {API_URL} from '../../utils/api'
 // Professional Toast Configuration
 const Toast = Swal.mixin({
   toast: true,

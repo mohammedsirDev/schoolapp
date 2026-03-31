@@ -2,7 +2,7 @@ import { Calendar, Clock, MapPin } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
-import {API_URL} from '../utils/api'
+import {API_URL} from '../../utils/api'
 function EventDetails() {
   const { id } = useParams()
   const [event, setEvent] = useState(null)

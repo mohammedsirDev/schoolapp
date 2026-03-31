@@ -90,7 +90,7 @@ function Programs() {
                 </h3>
 
                 <p className='text-sm text-gray-500 leading-relaxed line-clamp-2'>
-                  {program.description}
+                  {program.description || "Testing: Description should be here"}
                 </p>
 
                 <div className='grid grid-cols-2 gap-2 mt-1'>

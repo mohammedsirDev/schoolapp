@@ -48,9 +48,9 @@ function TeacherDetails() {
           <h2 className='text-3xl font-bold text-[#b04ba2]'>{teacher?.name}</h2>
           <p className='text-gray-500 font-semibold text-lg'>{teacher?.subject}</p>
           
-          {teacher?.Description && (
+          {teacher?.description && (
             <p className='text-sm text-gray-600 mt-3 leading-relaxed max-w-lg'>
-              {teacher.Description}
+              {teacher.description}
             </p>
           )}
         </div>

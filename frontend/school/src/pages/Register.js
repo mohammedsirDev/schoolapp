@@ -54,7 +54,7 @@ function Register() {
 
     setLoading(true)
     try {
-      await axios.post("https://simosir99.pythonanywhere.com/users/", form)
+      await axios.post(`${API_URL}/users/`, form)
       
       await Toast.fire({
         icon: 'success', 

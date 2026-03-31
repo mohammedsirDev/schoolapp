@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom"
-import { DollarSign, Clock, BookOpen, Users } from 'lucide-react'
+import {Clock, BookOpen, Users } from 'lucide-react'
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
 
@@ -110,11 +110,11 @@ function ProgramsList() {
                   </div>
                 </div>
 
-                <div className='border-t border-gray-100 pt-3 mt-1 flex items-center justify-end'>
-                  <span className='text-xs text-indigo-600 font-medium group-hover:underline'>
-                    View Details →
-                  </span>
-                </div>
+              <div className='border-t border-gray-100 pt-3 mt-1 flex items-center justify-end'>
+                <button type="button" className='text-xs text-indigo-600 font-medium group-hover:underline'>
+                  View Details →
+                </button>
+              </div>
               </div>
             </div>
           ))}

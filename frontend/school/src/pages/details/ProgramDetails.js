@@ -108,7 +108,7 @@ function ProgramDetails() {
         <div className="relative">
           <img src={program.image} alt={program.title} className='w-full h-80 object-cover' />
           <div className="absolute top-4 right-4 bg-white/90 backdrop-blur px-4 py-2 rounded-full font-bold text-indigo-600 shadow">
-            {program.price} DH
+            {program.price} 
           </div>
         </div>
 
@@ -150,7 +150,7 @@ function ProgramDetails() {
               <p className="text-xs font-bold text-indigo-500 uppercase">Votre Enseignant</p>
               <h2 className="text-xl font-bold text-gray-800">{program.teacher.name}</h2>
               <p className="text-indigo-600 font-medium mb-2">{program.teacher.subject}</p>
-              <p className="text-sm text-gray-600 italic">"{program.teacher.Description}"</p>
+              <p className="text-sm text-gray-600 italic">"{program.teacher.description}"</p>
             </div>
           </div>
         )}

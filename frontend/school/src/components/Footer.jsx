@@ -16,9 +16,9 @@ function Footer() {
             L'excellence en éducation — accompagner les élèves et les enseignants avec des outils modernes et une communauté en pleine croissance.
           </p>
           <div className="flex gap-3 mt-2">
-            <a href="#" className="w-8 h-8 rounded-full border border-gray-600 flex items-center justify-center hover:border-indigo-500 hover:text-indigo-400 transition text-xs">f</a>
-            <a href="#" className="w-8 h-8 rounded-full border border-gray-600 flex items-center justify-center hover:border-indigo-500 hover:text-indigo-400 transition text-xs">in</a>
-            <a href="#" className="w-8 h-8 rounded-full border border-gray-600 flex items-center justify-center hover:border-indigo-500 hover:text-indigo-400 transition text-xs">tw</a>
+            <a href="/" className="w-8 h-8 rounded-full border border-gray-600 flex items-center justify-center hover:border-indigo-500 hover:text-indigo-400 transition text-xs">f</a>
+            <a href="/" className="w-8 h-8 rounded-full border border-gray-600 flex items-center justify-center hover:border-indigo-500 hover:text-indigo-400 transition text-xs">in</a>
+            <a href="/" className="w-8 h-8 rounded-full border border-gray-600 flex items-center justify-center hover:border-indigo-500 hover:text-indigo-400 transition text-xs">tw</a>
           </div>
         </div>
 
